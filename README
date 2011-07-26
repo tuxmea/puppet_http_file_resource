@@ -1,4 +1,4 @@
-puppet http file provider resource
+puppet http file resource
 
 use any http server as source for files.
 
