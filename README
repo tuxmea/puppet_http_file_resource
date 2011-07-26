@@ -1,0 +1,42 @@
+puppet http file provider resource
+
+use any http server as source for files.
+
+we define a new resource: http_file
+
+e.g.
+
+http_file {
+	path 	=> "/tmp/testfile",
+	owner	=> root,
+	group	=> root,
+	mode	=> 644,
+	source	=> "http://www.yourwebserver.com/path/filename",
+}
+
+
+how do we check for updates:
+
+we require curl and wget to be available.
+
+1. check for latest file:
+we do not use md5sum or any other hashes. we fully rely upon the information from the http server.
+
+curl -D headers --range 0-100 $source
+
+cat headers
+
+Look for Last-Modified header. (make sure to convert any given timezone)
+
+
+2. Check local file
+if $path is not available:
+
+use wget to fetch $source
+
+if $path is available:
+
+read ctime (ls -l) and verify against information from curl Last Modified header
+
+if Last Modified header is not the same: use wget to fetch the file.
+
