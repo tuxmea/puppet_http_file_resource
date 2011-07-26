@@ -1,17 +1,17 @@
-puppet http file resource
+puppet http fetch function
 
 use any http server as source for files.
 
-we define a new resource: http_file
+we define a new function called fetch() use them as source in file resources
 
 e.g.
 
-http_file {
+file {
 	path 	=> "/tmp/testfile",
 	owner	=> root,
 	group	=> root,
 	mode	=> 644,
-	source	=> "http://www.yourwebserver.com/path/filename",
+	source	=> fetch("http://www.yourwebserver.com/path/filename"),
 }
 
 
