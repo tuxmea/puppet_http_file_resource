@@ -11,9 +11,12 @@ file {
 	owner	=> root,
 	group	=> root,
 	mode	=> 644,
-	source	=> fetch("http://www.yourwebserver.com/path/filename"),
+	content	=> fetch("http://www.yourwebserver.com/path/filename"),
 }
 
+
+
+Open tasks:
 
 how do we check for updates:
 
