@@ -1,4 +1,4 @@
-puppet http fetch function
+=== puppet http fetch function ===
 
 use any http server as source for files.
 
@@ -16,7 +16,14 @@ file {
 
 
 
-Open tasks:
+=== Open tasks: ===
+
+the fetch function _always_ fetches the remote file. puppet compares the donwloaded with the actual file.
+
+This is not useful for large files (e.g. iso images).
+
+Therefore we need to define a custom resource with the following functionality:
+
 
 how do we check for updates:
 
